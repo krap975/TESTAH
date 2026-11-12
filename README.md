@@ -1,5 +1,9 @@
 # Testah
 
+Testah is an AI-powered testing platform for agentic commerce. It allows developers to test their AI agents in personalized, LLM-generated financial environments with predefined safety guidelines.
+
+Licensed under the [MIT License](LICENSE).
+
 Publication/deployment preparation adds shared workspace access for invited demo users,
 PostgreSQL support, startup migrations and an undeployed Render Blueprint. See the
 [GitHub/Render runbook](docs/render-deployment.md) and

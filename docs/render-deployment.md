@@ -1,9 +1,11 @@
 # GitHub publication and Render deployment
 
-Prepared November 12, 2026. No GitHub repository or Render resource has been
-created. Applying a Blueprint or creating a service starts deployment; wait for
-explicit approval. This runbook covers the approved **shared workspace for trusted
-judges/demo users**. Invitees share all records and operations; separate user accounts
+Prepared November 12, 2026. The owner created the GitHub repository
+[krap975/TESTAH](https://github.com/krap975/TESTAH) with an initial README and MIT
+license. Its history is fetched and merged locally; no application code has been
+pushed and no Render resource has been created. Applying a Blueprint or creating
+a service starts deployment; wait for explicit approval. This runbook covers the
+approved **shared workspace for trusted judges/demo users**. Invitees share all records and operations; separate user accounts
 and tenant isolation are future work.
 
 ## Architecture and commands
@@ -28,9 +30,13 @@ and APIMatic artifacts remain available independently.
 
 ## 1. Publish GitHub source after approval
 
-This folder initially had no .git directory, local history or remote. A new local
-main repository is prepared. Other copies and remote/deleted histories are outside
-this audit. Review [the verification report](deployment-verification.md) first.
+This folder initially had no .git directory. Local application commit a16c535
+is on main. The origin remote is https://github.com/krap975/TESTAH.git; its main
+branch initially contains commit 217c3c3 with README.md and LICENSE. The local
+merge preserves both histories, the remote introduction and exact MIT license,
+and the complete local developer documentation. Other copies and deleted or
+unfetched histories are outside this audit. Review
+[the original verification report](deployment-verification.md) first.
 Do not use git add -f or include ignored runtime files.
 
 From E:\Testah in PowerShell:
@@ -38,26 +44,28 @@ From E:\Testah in PowerShell:
 ~~~powershell
 git -c safe.directory=E:/Testah status --short
 .\backend\.venv\Scripts\python.exe backend/scripts/audit_publication.py --history
-git -c safe.directory=E:/Testah log -1 --oneline
+git -c safe.directory=E:/Testah remote -v
+git -c safe.directory=E:/Testah log --graph --oneline --decorate -5
 ~~~
 
 The exact-directory, per-command safe.directory option handles metadata created by
 the sandbox account; it does not change global Git trust settings.
 
-After explicit publication approval, create an **empty** GitHub repository in your
-chosen account (no generated README/license/gitignore). Use public visibility only
-when approved. Substitute the actual owner/repository below:
+Only after explicit push approval, refresh and verify the remote has not advanced:
 
 ~~~powershell
-git -c safe.directory=E:/Testah remote add origin https://github.com/YOUR_OWNER/YOUR_REPOSITORY.git
-git -c safe.directory=E:/Testah remote -v
+git -c safe.directory=E:/Testah fetch origin
+git -c safe.directory=E:/Testah merge-base --is-ancestor origin/main HEAD
+if ($LASTEXITCODE -ne 0) { throw 'Remote history advanced; inspect and merge before pushing.' }
 git -c safe.directory=E:/Testah push -u origin main
 ~~~
 
-Inspect an existing origin before changing it; do not force-push. The prepared
-initial commit includes the application, quickstart, candidate specification and
-original APIMatic ZIP/provenance. GitHub CI includes a disposable PostgreSQL service.
-Publishing source does not configure or deploy Render.
+This is a normal fast-forward push that retains the remote initial commit. Never
+force-push or reset remote history. If origin/main has advanced, inspect the new
+commits and merge safely before retrying. The application commit includes the
+quickstart, candidate specification and original APIMatic ZIP/provenance. GitHub
+CI includes a disposable PostgreSQL service. Publishing source does not configure
+or deploy Render.
 
 ## 2. Connect and configure Render after approval
 
