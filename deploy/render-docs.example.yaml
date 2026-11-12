@@ -1,0 +1,14 @@
+# Undeployed example: PUBLIC STATIC DOCUMENTATION ONLY.
+# This file intentionally defines no Testah API, sample agent or database.
+# Review and approve deployment separately. Do not rename to render.yaml implicitly.
+services:
+  - type: web
+    runtime: static
+    name: testah-candidate-docs
+    buildCommand: test -f docs/apimatic/portal/index.html
+    staticPublishPath: docs/apimatic/portal
+    autoDeployTrigger: "off"
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff

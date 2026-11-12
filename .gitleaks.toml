@@ -1,0 +1,25 @@
+title = "Testah publication checks"
+[extend]
+useDefault = true
+
+# Exact APIMatic parameter-name placeholder; preserve original artifact bytes.
+[[allowlists]]
+description = "Authorization parameter example, not a credential"
+condition = "AND"
+paths = ['''docs/apimatic/(portal/llms-pages/http/api-endpoints/candidate-agent/respond-to-testah\.md|testah-candidate-portal\.zip!llms-pages/http/api-endpoints/candidate-agent/respond-to-testah\.md)$''']
+regexTarget = "secret"
+regexes = ['''^Authorization$''']
+
+[[allowlists]]
+description = "Verified SHA-256 artifact/input checksums"
+condition = "AND"
+paths = ['''docs/apimatic/provenance/manifest\.json$''']
+regexTarget = "secret"
+regexes = ['''^[0-9a-f]{64}$''']
+
+[[allowlists]]
+description = "Historical synthetic proposal UUID, not an API key"
+condition = "AND"
+paths = ['''docs/task05\.5\.1-verification\.md$''']
+regexTarget = "secret"
+regexes = ['''^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$''']

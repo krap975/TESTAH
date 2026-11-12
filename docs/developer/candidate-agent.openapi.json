@@ -1,0 +1,601 @@
+{
+  "components": {
+    "schemas": {
+      "AgentRequest": {
+        "additionalProperties": false,
+        "description": "One bounded version 1.0 exchange sent by Testah to the candidate.",
+        "example": {
+          "message": {
+            "content": "Please confirm protocol compatibility.",
+            "role": "user"
+          },
+          "protocol_version": "1.0",
+          "request_id": "request-demo-001",
+          "session_id": "connection-test-demo-001"
+        },
+        "properties": {
+          "available_tools": {
+            "items": {
+              "$ref": "#/components/schemas/ToolDefinition"
+            },
+            "maxItems": 50,
+            "type": "array"
+          },
+          "context": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/JsonValue"
+            },
+            "type": "object"
+          },
+          "history": {
+            "items": {
+              "$ref": "#/components/schemas/Message"
+            },
+            "maxItems": 100,
+            "type": "array"
+          },
+          "message": {
+            "$ref": "#/components/schemas/CustomerMessage"
+          },
+          "previous_tool_result": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ToolResult"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "protocol_version": {
+            "const": "1.0",
+            "type": "string"
+          },
+          "request_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          },
+          "session_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "protocol_version",
+          "request_id",
+          "session_id",
+          "message"
+        ],
+        "type": "object"
+      },
+      "AgentResponse": {
+        "description": "Exactly one response variant, selected by type; identifiers must match the request.",
+        "discriminator": {
+          "mapping": {
+            "completed": "#/components/schemas/CompletedResponse",
+            "message": "#/components/schemas/MessageResponse",
+            "tool_call": "#/components/schemas/ToolCallResponse"
+          },
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/MessageResponse"
+          },
+          {
+            "$ref": "#/components/schemas/ToolCallResponse"
+          },
+          {
+            "$ref": "#/components/schemas/CompletedResponse"
+          }
+        ]
+      },
+      "CompletedResponse": {
+        "additionalProperties": false,
+        "description": "A candidate completion claim, independently verified by the controller.",
+        "example": {
+          "protocol_version": "1.0",
+          "request_id": "request-demo-001",
+          "session_id": "connection-test-demo-001",
+          "summary": "Protocol demonstration finished; no purchase was performed.",
+          "type": "completed"
+        },
+        "properties": {
+          "protocol_version": {
+            "const": "1.0",
+            "type": "string"
+          },
+          "request_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          },
+          "session_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          },
+          "summary": {
+            "maxLength": 16000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": {
+            "const": "completed",
+            "type": "string"
+          }
+        },
+        "required": [
+          "protocol_version",
+          "request_id",
+          "session_id",
+          "type",
+          "summary"
+        ],
+        "type": "object"
+      },
+      "CustomerMessage": {
+        "additionalProperties": false,
+        "description": "The current customer message supplied by Testah.",
+        "properties": {
+          "content": {
+            "maxLength": 16000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "role": {
+            "const": "user",
+            "default": "user",
+            "type": "string"
+          }
+        },
+        "required": [
+          "content"
+        ],
+        "type": "object"
+      },
+      "HTTPValidationError": {
+        "description": "Standalone FastAPI sample validation failure; not Testah's management error envelope.",
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "JsonValue": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          },
+          {
+            "type": "array"
+          },
+          {
+            "type": "object"
+          }
+        ],
+        "description": "Any finite JSON value, including nested objects, arrays and null."
+      },
+      "Message": {
+        "additionalProperties": false,
+        "description": "An ordered public history message; tool content contains serialized JSON.",
+        "properties": {
+          "content": {
+            "maxLength": 16000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "user",
+              "assistant",
+              "tool"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "role",
+          "content"
+        ],
+        "type": "object"
+      },
+      "MessageResponse": {
+        "additionalProperties": false,
+        "description": "A conversational reply, without a tool request or completion claim.",
+        "example": {
+          "message": "Protocol request received.",
+          "protocol_version": "1.0",
+          "request_id": "request-demo-001",
+          "session_id": "connection-test-demo-001",
+          "type": "message"
+        },
+        "properties": {
+          "message": {
+            "maxLength": 16000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "protocol_version": {
+            "const": "1.0",
+            "type": "string"
+          },
+          "request_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          },
+          "session_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          },
+          "type": {
+            "const": "message",
+            "type": "string"
+          }
+        },
+        "required": [
+          "protocol_version",
+          "request_id",
+          "session_id",
+          "type",
+          "message"
+        ],
+        "type": "object"
+      },
+      "ToolCall": {
+        "additionalProperties": false,
+        "description": "A fresh run-scoped correlation, advertised tool name and argument object.",
+        "properties": {
+          "arguments": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/JsonValue"
+            },
+            "type": "object"
+          },
+          "correlation_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "correlation_id",
+          "name",
+          "arguments"
+        ],
+        "type": "object"
+      },
+      "ToolCallResponse": {
+        "additionalProperties": false,
+        "description": "One request for a permitted tool; execution remains with Testah's gateway.",
+        "example": {
+          "protocol_version": "1.0",
+          "request_id": "request-demo-001",
+          "session_id": "connection-test-demo-001",
+          "tool_call": {
+            "arguments": {
+              "text": "Example only."
+            },
+            "correlation_id": "call-demo-001",
+            "name": "test_echo"
+          },
+          "type": "tool_call"
+        },
+        "properties": {
+          "protocol_version": {
+            "const": "1.0",
+            "type": "string"
+          },
+          "request_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          },
+          "session_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          },
+          "tool_call": {
+            "$ref": "#/components/schemas/ToolCall"
+          },
+          "type": {
+            "const": "tool_call",
+            "type": "string"
+          }
+        },
+        "required": [
+          "protocol_version",
+          "request_id",
+          "session_id",
+          "type",
+          "tool_call"
+        ],
+        "type": "object"
+      },
+      "ToolDefinition": {
+        "additionalProperties": false,
+        "description": "An advertised name, description and argument schema; not execution authority.",
+        "properties": {
+          "description": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "input_schema": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/JsonValue"
+            },
+            "type": "object"
+          },
+          "name": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "input_schema"
+        ],
+        "type": "object"
+      },
+      "ToolResult": {
+        "additionalProperties": false,
+        "description": "A correlated gateway success or safe error, supplied on a subsequent exchange.",
+        "properties": {
+          "correlation_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          },
+          "result": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/JsonValue"
+            },
+            "type": "object"
+          },
+          "status": {
+            "enum": [
+              "success",
+              "error"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "correlation_id",
+          "name",
+          "status",
+          "result"
+        ],
+        "type": "object"
+      },
+      "ValidationError": {
+        "description": "A sample validation detail; never put sensitive values in a protocol request.",
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array"
+          },
+          "msg": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "CandidateAuthorization": {
+        "description": "Optional complete header value configured server-side by the operator. No automatic Bearer prefix is added. Never publish a real value.",
+        "in": "header",
+        "name": "Authorization",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "contact": {
+      "name": "Testah project operator"
+    },
+    "description": "The agent developer implements this endpoint; Testah is its HTTP client. This specification contains only the candidate interface, not Testah's operational API. Return one response with matching protocol_version, request_id and session_id. A tool_call requests gateway execution; it does not execute a tool directly. A completed response is a candidate claim, not an assessment result. Strict Python validation also rejects coercion, duplicate JSON keys and non-finite numbers. The placeholder server is not a live service.",
+    "title": "Testah Candidate Agent Protocol",
+    "version": "1.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/agent": {
+      "post": {
+        "description": "Implement this POST on the external candidate service. Send HTTP 200 with uncompressed application/json. Return exactly one message, tool_call, or completed response; echo identifiers exactly. Only advertised tools may be requested. Use a fresh tool correlation_id for each call within a run. Testah sends the gateway result in previous_tool_result on a subsequent exchange. Requests are limited to 65536 serialized UTF-8 bytes; responses default to 65536 bytes. The total exchange deadline defaults to 10 seconds (operator-configurable from 1 to 60). Testah never automatically retries this POST. Redirects and compressed responses are rejected. Authentication and validation errors documented here describe the standalone FastAPI sample; Testah maps non-success HTTP responses to its own safe connector errors.",
+        "operationId": "respondToTestah",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "examples": {
+                "compatibility": {
+                  "summary": "Minimal synthetic compatibility request; optional fields may be omitted",
+                  "value": {
+                    "message": {
+                      "content": "Please confirm protocol compatibility.",
+                      "role": "user"
+                    },
+                    "protocol_version": "1.0",
+                    "request_id": "request-demo-001",
+                    "session_id": "connection-test-demo-001"
+                  }
+                }
+              },
+              "schema": {
+                "$ref": "#/components/schemas/AgentRequest"
+              }
+            }
+          },
+          "description": "Strict candidate request. All examples are synthetic; the probe executes no tools.",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "completed": {
+                    "summary": "completed",
+                    "value": {
+                      "protocol_version": "1.0",
+                      "request_id": "request-demo-001",
+                      "session_id": "connection-test-demo-001",
+                      "summary": "Protocol demonstration finished; no purchase was performed.",
+                      "type": "completed"
+                    }
+                  },
+                  "message": {
+                    "summary": "message",
+                    "value": {
+                      "message": "Protocol request received.",
+                      "protocol_version": "1.0",
+                      "request_id": "request-demo-001",
+                      "session_id": "connection-test-demo-001",
+                      "type": "message"
+                    }
+                  },
+                  "tool_call": {
+                    "summary": "tool call",
+                    "value": {
+                      "protocol_version": "1.0",
+                      "request_id": "request-demo-001",
+                      "session_id": "connection-test-demo-001",
+                      "tool_call": {
+                        "arguments": {
+                          "text": "Example only."
+                        },
+                        "correlation_id": "call-demo-001",
+                        "name": "test_echo"
+                      },
+                      "type": "tool_call"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/AgentResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "detail": "Authentication required."
+                },
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "detail"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "The sample rejects missing or incorrect authentication when its optional token is configured."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "CandidateAuthorization": []
+          },
+          {}
+        ],
+        "summary": "Respond to one Testah candidate request",
+        "tags": [
+          "Candidate agent"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Non-resolving placeholder; replace with the approved candidate origin.",
+      "url": "https://candidate.invalid"
+    }
+  ],
+  "x-testah-contract-source": "backend/app/schemas/protocol.py",
+  "x-testah-transport": {
+    "automatic_post_retries": 0,
+    "default_total_timeout_seconds": 10,
+    "request_max_bytes": 65536,
+    "response_default_max_bytes": 65536
+  }
+}

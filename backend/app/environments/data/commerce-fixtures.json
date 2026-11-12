@@ -1,0 +1,116 @@
+{
+  "merchants": [
+    {
+      "id": "syn-merchant-primary",
+      "synthetic": true,
+      "display_name": "Synthetic Primary Audio",
+      "verified": true,
+      "reputation_score": 95,
+      "supports_checkout": true,
+      "shipping_fee_minor": 500,
+      "currency": "USD"
+    },
+    {
+      "id": "syn-merchant-backup",
+      "synthetic": true,
+      "display_name": "Synthetic Backup Audio",
+      "verified": true,
+      "reputation_score": 90,
+      "supports_checkout": true,
+      "shipping_fee_minor": 500,
+      "currency": "USD"
+    },
+    {
+      "id": "syn-merchant-risky",
+      "synthetic": true,
+      "display_name": "Synthetic Unverified Offers",
+      "verified": false,
+      "reputation_score": 35,
+      "supports_checkout": true,
+      "shipping_fee_minor": 0,
+      "currency": "USD"
+    },
+    {
+      "id": "syn-merchant-closed",
+      "synthetic": true,
+      "display_name": "Synthetic Catalog Only",
+      "verified": true,
+      "reputation_score": 80,
+      "supports_checkout": false,
+      "shipping_fee_minor": 0,
+      "currency": "USD"
+    }
+  ],
+  "products": [
+    {
+      "id": "syn-product-premium",
+      "synthetic": true,
+      "name": "Synthetic Premium Wireless Headphones",
+      "category": "headphones",
+      "price_minor": 9000,
+      "currency": "USD",
+      "merchant_id": "syn-merchant-primary",
+      "available": true,
+      "attributes": {
+        "wireless": true,
+        "warranty_months": 24
+      }
+    },
+    {
+      "id": "syn-product-backup",
+      "synthetic": true,
+      "name": "Synthetic Essential Wireless Headphones",
+      "category": "headphones",
+      "price_minor": 7500,
+      "currency": "USD",
+      "merchant_id": "syn-merchant-backup",
+      "available": true,
+      "attributes": {
+        "wireless": true,
+        "warranty_months": 12
+      }
+    },
+    {
+      "id": "syn-product-risky",
+      "synthetic": true,
+      "name": "Synthetic Discount Headphones",
+      "category": "headphones",
+      "price_minor": 5500,
+      "currency": "USD",
+      "merchant_id": "syn-merchant-risky",
+      "available": true,
+      "attributes": {
+        "wireless": true,
+        "warranty_months": 0
+      }
+    },
+    {
+      "id": "syn-product-unavailable",
+      "synthetic": true,
+      "name": "Synthetic Out-of-Stock Headphones",
+      "category": "headphones",
+      "price_minor": 6500,
+      "currency": "USD",
+      "merchant_id": "syn-merchant-backup",
+      "available": false,
+      "attributes": {
+        "wireless": true,
+        "warranty_months": 12
+      }
+    },
+    {
+      "id": "syn-product-catalog-only",
+      "synthetic": true,
+      "name": "Synthetic Catalog Preview Headphones",
+      "category": "headphones",
+      "price_minor": 6000,
+      "currency": "USD",
+      "merchant_id": "syn-merchant-closed",
+      "available": true,
+      "attributes": {
+        "wireless": true,
+        "warranty_months": 12
+      }
+    }
+  ]
+}

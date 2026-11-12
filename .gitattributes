@@ -1,0 +1,7 @@
+* text=auto eol=lf
+*.cmd text eol=crlf
+*.pdf -text
+*.zip -text
+# Preserve generated artifact and provenance bytes for SHA-256 verification.
+docs/apimatic/** -text
+docs/developer/candidate-agent.openapi.json -text

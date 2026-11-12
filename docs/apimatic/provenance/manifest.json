@@ -1,0 +1,67 @@
+{
+  "recorded_at_utc": "2026-11-10T14:07:51.829632+00:00",
+  "generator": "APIMatic CLI 1.5.0",
+  "runtime": "Node.js 22.11.0 / Windows",
+  "workflow": "authenticated APIMatic Docs as Code portal generate --zip; HTTP only",
+  "validation_exit_code": 0,
+  "generation_exit_code": 0,
+  "inputs": {
+    "docs/developer/candidate-agent.openapi.json": "3b372a7c303ac9dd491585a8de20b9e95dff0b5c4d7defea480d96f61b7b6540",
+    "backend/app/schemas/protocol.py": "d02c15228a818104821a5aca029e54883e6c7257e8331a7010c80b3716514213",
+    "tmp/phase10-apimatic-input/src/APIMATIC-BUILD.json": "b819675fef852dcb5b42c4753e6e41720922a61cccfb3aabda0bb7b5b476a029",
+    "tmp/phase10-apimatic-input/src/content/toc.yml": "4e90d10ca876135b26a89bd1ea82413419715bbf937c599de0cad165c3ff0dea",
+    "tmp/phase10-apimatic-input/src/spec/candidate-agent.openapi.json": "3b372a7c303ac9dd491585a8de20b9e95dff0b5c4d7defea480d96f61b7b6540",
+    "tmp/phase10-apimatic-input/src/content/guides/overview.md": "cd28af6823e765ea2c5f66916d2f28ba19428f9a2326541d401543e013869c03"
+  },
+  "artifact": {
+    "docs/apimatic/testah-candidate-portal.zip": "6ee197f8970554aa7e40951d44da0c4394984f244028f17826c6439ae76282f6"
+  },
+  "generated_files": {
+    "docs/apimatic/portal/index.html": "02a901e58e0627781408204b76a9ba32d1ecb35d7e38b7068a22393c20254885",
+    "docs/apimatic/portal/llms-pages/http/api-endpoints.md": "e652d65bb3ec76ca657fa4e21720f2d484fffd3434daafdf1d3d930ab1bb6be2",
+    "docs/apimatic/portal/llms-pages/http/candidate-integration/overview.md": "f45782e2da298a76067f6696edb421e26f1c0d5f7a4d7a00123f253a3c8facd6",
+    "docs/apimatic/portal/llms-pages/http/api-endpoints/candidate-agent/respond-to-testah.md": "3e43245b7be37f314be37f8a5b7d325d48f44092da197da8372d894529547afc",
+    "docs/apimatic/portal/llms-pages/http/models/enumerations/role-1.md": "1aebacb68d0728ef032fefa3cacc84384758a1cb964e385353b0782784f16810",
+    "docs/apimatic/portal/llms-pages/http/models/enumerations/role.md": "73c316333e5688b2e699f4cee01b2549dd251ddb21b9a2160584c79ced9dee9a",
+    "docs/apimatic/portal/llms-pages/http/models/enumerations/status.md": "35fe4bf52f537aa2db6ca9d7e4287c5c2f04a389ea96a7791dc01829612a35e7",
+    "docs/apimatic/portal/llms-pages/http/models/exceptions/agent-401-error.md": "57112146fc338e1cf5d938010171a1f1a3fab37b7533ead91e63a4224602b27c",
+    "docs/apimatic/portal/llms-pages/http/models/exceptions/http-validation-error-error.md": "f936f6edd478ec54c57ae69837c726a6bc52f5c64670c634ff5c0c8d0be5bdbd",
+    "docs/apimatic/portal/llms-pages/http/models/oneof-anyof-definitions/agent-request-previous-tool-result.md": "c7a0e148f0ddfb74fb868fbbe85a7a906ded7496e18a861a33e3b122f00700ba",
+    "docs/apimatic/portal/llms-pages/http/models/oneof-anyof-definitions/agent-response.md": "78a36760367ecbfab11823c5ff5b8f500a68e977bee41080ff54995a4f51069d",
+    "docs/apimatic/portal/llms-pages/http/models/oneof-anyof-definitions/json-value.md": "694c6e27d63a6d79a6f3f7cb1d70574bff4bb21405aff2ea26c4b246755abf26",
+    "docs/apimatic/portal/llms-pages/http/models/oneof-anyof-definitions/validation-error-loc.md": "7676b1355a6773fea0e48c2f88f5f6598a11d1672cbb965cedbd7e82f298bb67",
+    "docs/apimatic/portal/llms-pages/http/models/structures/agent-401-error-1.md": "6e5fb323d46dbcb6c3f39d655d90bc445fe7e5e8e4ddd4d2ea84921505e728d0",
+    "docs/apimatic/portal/llms-pages/http/models/structures/agent-request.md": "49c6d7dda040b0d508e4834dc7f48526e9278d99ab6992765c1db2fc85f62974",
+    "docs/apimatic/portal/llms-pages/http/models/structures/completed-response.md": "1114d48e02b6c77ed8af583c01688bf825eb438e20c814e936210e83cc41a8bc",
+    "docs/apimatic/portal/llms-pages/http/models/structures/customer-message.md": "f94b58ad3cbe386aa2e0363d7e398bb37793e47de20ef67ace05ac0e41ae2fe9",
+    "docs/apimatic/portal/llms-pages/http/models/structures/http-validation-error.md": "3d681e6373a0e40463415c9365ab7fab6242e62239844a486bfa18c1442399af",
+    "docs/apimatic/portal/llms-pages/http/models/structures/message-response.md": "1475a178b4c1fc419345ebc3d8c3e287626209c8db2fe72c0882aed4f6cf926e",
+    "docs/apimatic/portal/llms-pages/http/models/structures/message.md": "c480837c3878fcaf56b767e4762dfff1560b6a5d94b3f9409f42872265ef94e7",
+    "docs/apimatic/portal/llms-pages/http/models/structures/previous-tool-result.md": "ef6dc2ee04a246d50685a046f19d5ce7a0c040eb908df74d1ab45e6adc403777",
+    "docs/apimatic/portal/llms-pages/http/models/structures/tool-call-response.md": "845729ff22107b7f7ba1520a2c1e9d164b1799ced4ef9876069321368430d007",
+    "docs/apimatic/portal/llms-pages/http/models/structures/tool-call.md": "7428ef811d3400033ab05d732da03d2f4fec94b08dabcc290ef5d139f4e26bcb",
+    "docs/apimatic/portal/llms-pages/http/models/structures/tool-definition.md": "680b4946db394e5503144c70a9179047b11e892912f95bec0ecca77faffb8a99",
+    "docs/apimatic/portal/llms-pages/http/models/structures/tool-result.md": "f1e7e9e74e045e04811e70e136dc5cf958198b994548f58b7814858bc378dee6",
+    "docs/apimatic/portal/llms-pages/http/models/structures/validation-error.md": "c8ce86b14842109d7842d94b6b3b735fb51bf9263271bf010a374c0d7a12906a",
+    "docs/apimatic/portal/static/css/portal.css": "04961e8aecfd096c68aae48ee5acf9e36c738af00695674600da01838c688c5b",
+    "docs/apimatic/portal/static/docs/testah-candidate-agent-protocol-HTTP_CURL_V1.json": "4e13f275417bda0cbd06ec4696f22ad76d6a1eeaec333d0a9f3249da979047d0",
+    "docs/apimatic/portal/static/js/portal.js": "40d90969b167cde6c552416eb8192a30ab02d9cb9dfc5de3b8e43f1a950dbb6a",
+    "docs/apimatic/portal/static/images/docs/selectArrowDown.svg": "b1521592567e480d5c7b6c42ad0219d76a97a64bd4bba054f163f86424c12b7e"
+  },
+  "verification": {
+    "file_count": 30,
+    "generated_request_example_valid": true,
+    "generated_response_examples_valid": 3,
+    "private_operation_scan": "passed",
+    "configured_secret_scan": "passed",
+    "sdk_files": 0,
+    "browser_visual_check": "unverified: browser host and native pipe unavailable"
+  },
+  "deployment": "not deployed",
+  "account_metadata_included": false,
+  "limitations": [
+    "Non-blocking APIMatic lint warnings retained in validation.txt",
+    "Interactive portal loads APIMatic's official dxjs.apimatic.io v7 runtime",
+    "Generated endpoint auth heading says requires; source and guide explain optional auth"
+  ]
+}

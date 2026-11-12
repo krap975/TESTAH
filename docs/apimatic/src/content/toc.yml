@@ -1,0 +1,9 @@
+toc:
+  - group: Candidate Integration
+    items:
+      - page: Overview
+        file: guides/overview.md
+  - generate: API Endpoints
+    from: endpoints
+  - generate: Models
+    from: models

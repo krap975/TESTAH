@@ -1,0 +1,252 @@
+Command: apimatic api validate --file=docs/developer/candidate-agent.openapi.json
+Exit code: 0
+
+┌   Validate API 
+│
+[progress animation omitted]
+◇  API validation completed
+│
+▲  Warnings
+│
+│  Include environment information for each server. [UntitledAPI:588:3] (#)
+│
+│  Schema should include a non-empty description. [UntitledAPI:17:30] (#/components/schemas/AgentRequest/properties/available_tools)
+│
+│  Schema should include a non-empty description. [UntitledAPI:24:22] (#/components/schemas/AgentRequest/properties/context)
+│
+│  Schema should include a non-empty description. [UntitledAPI:30:22] (#/components/schemas/AgentRequest/properties/history)
+│
+│  Schema should include a non-empty description. [UntitledAPI:40:35] (#/components/schemas/AgentRequest/properties/previous_tool_result)
+│
+│  Schema should include a non-empty description. [UntitledAPI:45:15] (#/components/schemas/AgentRequest/properties/previous_tool_result/anyOf/1)
+│
+│  Schema should include a non-empty description. [UntitledAPI:50:31] (#/components/schemas/AgentRequest/properties/protocol_version)
+│
+│  Schema should include a non-empty description. [UntitledAPI:54:25] (#/components/schemas/AgentRequest/properties/request_id)
+│
+│  Schema should include a non-empty description. [UntitledAPI:60:25] (#/components/schemas/AgentRequest/properties/session_id)
+│
+│  Schema should include a non-empty description. [UntitledAPI:108:31] (#/components/schemas/CompletedResponse/properties/protocol_version)
+│
+│  Schema should include a non-empty description. [UntitledAPI:112:25] (#/components/schemas/CompletedResponse/properties/request_id)
+│
+│  Schema should include a non-empty description. [UntitledAPI:118:25] (#/components/schemas/CompletedResponse/properties/session_id)
+│
+│  Schema should include a non-empty description. [UntitledAPI:124:22] (#/components/schemas/CompletedResponse/properties/summary)
+│
+│  Schema should include a non-empty description. [UntitledAPI:129:19] (#/components/schemas/CompletedResponse/properties/type)
+│
+│  Schema should include a non-empty description. [UntitledAPI:147:22] (#/components/schemas/CustomerMessage/properties/content)
+│
+│  Schema should include a non-empty description. [UntitledAPI:152:19] (#/components/schemas/CustomerMessage/properties/role)
+│
+│  Schema should include a non-empty description. [UntitledAPI:166:21] (#/components/schemas/HTTPValidationError/properties/detail)
+│
+│  Schema should include a non-empty description. [UntitledAPI:177:11] (#/components/schemas/JsonValue/anyOf/0)
+│
+│  Schema should include a non-empty description. [UntitledAPI:180:11] (#/components/schemas/JsonValue/anyOf/1)
+│
+│  Schema should include a non-empty description. [UntitledAPI:183:11] (#/components/schemas/JsonValue/anyOf/2)
+│
+│  Schema should include a non-empty description. [UntitledAPI:186:11] (#/components/schemas/JsonValue/anyOf/3)
+│
+│  Schema should include a non-empty description. [UntitledAPI:189:11] (#/components/schemas/JsonValue/anyOf/4)
+│
+│  Schema should include a non-empty description. [UntitledAPI:192:11] (#/components/schemas/JsonValue/anyOf/5)
+│
+│  Schema should include a non-empty description. [UntitledAPI:202:22] (#/components/schemas/Message/properties/content)
+│
+│  Schema should include a non-empty description. [UntitledAPI:207:19] (#/components/schemas/Message/properties/role)
+│
+│  Schema should include a non-empty description. [UntitledAPI:233:22] (#/components/schemas/MessageResponse/properties/message)
+│
+│  Schema should include a non-empty description. [UntitledAPI:238:31] (#/components/schemas/MessageResponse/properties/protocol_version)
+│
+│  Schema should include a non-empty description. [UntitledAPI:242:25] (#/components/schemas/MessageResponse/properties/request_id)
+│
+│  Schema should include a non-empty description. [UntitledAPI:248:25] (#/components/schemas/MessageResponse/properties/session_id)
+│
+│  Schema should include a non-empty description. [UntitledAPI:254:19] (#/components/schemas/MessageResponse/properties/type)
+│
+│  Schema should include a non-empty description. [UntitledAPI:272:24] (#/components/schemas/ToolCall/properties/arguments)
+│
+│  Schema should include a non-empty description. [UntitledAPI:278:29] (#/components/schemas/ToolCall/properties/correlation_id)
+│
+│  Schema should include a non-empty description. [UntitledAPI:284:19] (#/components/schemas/ToolCall/properties/name)
+│
+│  Schema should include a non-empty description. [UntitledAPI:315:31] (#/components/schemas/ToolCallResponse/properties/protocol_version)
+│
+│  Schema should include a non-empty description. [UntitledAPI:319:25] (#/components/schemas/ToolCallResponse/properties/request_id)
+│
+│  Schema should include a non-empty description. [UntitledAPI:325:25] (#/components/schemas/ToolCallResponse/properties/session_id)
+│
+│  Schema should include a non-empty description. [UntitledAPI:334:19] (#/components/schemas/ToolCallResponse/properties/type)
+│
+│  Schema should include a non-empty description. [UntitledAPI:352:26] (#/components/schemas/ToolDefinition/properties/description)
+│
+│  Schema should include a non-empty description. [UntitledAPI:357:27] (#/components/schemas/ToolDefinition/properties/input_schema)
+│
+│  Schema should include a non-empty description. [UntitledAPI:363:19] (#/components/schemas/ToolDefinition/properties/name)
+│
+│  Schema should include a non-empty description. [UntitledAPI:381:29] (#/components/schemas/ToolResult/properties/correlation_id)
+│
+│  Schema should include a non-empty description. [UntitledAPI:387:19] (#/components/schemas/ToolResult/properties/name)
+│
+│  Schema should include a non-empty description. [UntitledAPI:393:21] (#/components/schemas/ToolResult/properties/result)
+│
+│  Schema should include a non-empty description. [UntitledAPI:399:21] (#/components/schemas/ToolResult/properties/status)
+│
+│  Schema should include a non-empty description. [UntitledAPI:418:18] (#/components/schemas/ValidationError/properties/loc)
+│
+│  Schema should include a non-empty description. [UntitledAPI:419:22] (#/components/schemas/ValidationError/properties/loc/items)
+│
+│  Schema should include a non-empty description. [UntitledAPI:421:17] (#/components/schemas/ValidationError/properties/loc/items/anyOf/0)
+│
+│  Schema should include a non-empty description. [UntitledAPI:424:17] (#/components/schemas/ValidationError/properties/loc/items/anyOf/1)
+│
+│  Schema should include a non-empty description. [UntitledAPI:431:18] (#/components/schemas/ValidationError/properties/msg)
+│
+│  Schema should include a non-empty description. [UntitledAPI:434:19] (#/components/schemas/ValidationError/properties/type)
+│
+│  Schema should include a non-empty description. [UntitledAPI:549:27] (#/paths/~1agent/post/responses/401/content/application~1json/schema)
+│
+│  Schema should include a non-empty description. [UntitledAPI:551:31] (#/paths/~1agent/post/responses/401/content/application~1json/schema/properties/detail)
+│
+│  Object schema must define properties. [UntitledAPI:192:11] (#/components/schemas/JsonValue/anyOf/5)
+│
+│  Inline complex schema definition found. [UntitledAPI:40:35] (#/components/schemas/AgentRequest/properties/previous_tool_result)
+│
+│  Inline complex schema definition found. [UntitledAPI:419:22] (#/components/schemas/ValidationError/properties/loc/items)
+│
+│  Inline complex schema definition found. [UntitledAPI:549:27] (#/paths/~1agent/post/responses/401/content/application~1json/schema)
+│
+│  Inline enum schema definition found. [UntitledAPI:207:19] (#/components/schemas/Message/properties/role)
+│
+│  Inline enum schema definition found. [UntitledAPI:399:21] (#/components/schemas/ToolResult/properties/status)
+│
+│  Undefined tag used in operation object. [UntitledAPI:583:11] (#/paths/~1agent/post/tags/0)
+│
+●  Information
+│
+│  The root OpenAPI file name does not follow recommended conventions. [UntitledAPI:1:1] (#)
+│
+│  Schema object example/default value is missing. [UntitledAPI:17:30] (#/components/schemas/AgentRequest/properties/available_tools)
+│
+│  Schema object example/default value is missing. [UntitledAPI:24:22] (#/components/schemas/AgentRequest/properties/context)
+│
+│  Schema object example/default value is missing. [UntitledAPI:30:22] (#/components/schemas/AgentRequest/properties/history)
+│
+│  Schema object example/default value is missing. [UntitledAPI:40:35] (#/components/schemas/AgentRequest/properties/previous_tool_result)
+│
+│  Schema object example/default value is missing. [UntitledAPI:45:15] (#/components/schemas/AgentRequest/properties/previous_tool_result/anyOf/1)
+│
+│  Schema object example/default value is missing. [UntitledAPI:50:31] (#/components/schemas/AgentRequest/properties/protocol_version)
+│
+│  Schema object example/default value is missing. [UntitledAPI:54:25] (#/components/schemas/AgentRequest/properties/request_id)
+│
+│  Schema object example/default value is missing. [UntitledAPI:60:25] (#/components/schemas/AgentRequest/properties/session_id)
+│
+│  Schema object example/default value is missing. [UntitledAPI:75:24] (#/components/schemas/AgentResponse)
+│
+│  Schema object example/default value is missing. [UntitledAPI:108:31] (#/components/schemas/CompletedResponse/properties/protocol_version)
+│
+│  Schema object example/default value is missing. [UntitledAPI:112:25] (#/components/schemas/CompletedResponse/properties/request_id)
+│
+│  Schema object example/default value is missing. [UntitledAPI:118:25] (#/components/schemas/CompletedResponse/properties/session_id)
+│
+│  Schema object example/default value is missing. [UntitledAPI:124:22] (#/components/schemas/CompletedResponse/properties/summary)
+│
+│  Schema object example/default value is missing. [UntitledAPI:129:19] (#/components/schemas/CompletedResponse/properties/type)
+│
+│  Schema object example/default value is missing. [UntitledAPI:143:26] (#/components/schemas/CustomerMessage)
+│
+│  Schema object example/default value is missing. [UntitledAPI:147:22] (#/components/schemas/CustomerMessage/properties/content)
+│
+│  Schema object example/default value is missing. [UntitledAPI:163:30] (#/components/schemas/HTTPValidationError)
+│
+│  Schema object example/default value is missing. [UntitledAPI:166:21] (#/components/schemas/HTTPValidationError/properties/detail)
+│
+│  Schema object example/default value is missing. [UntitledAPI:175:20] (#/components/schemas/JsonValue)
+│
+│  Schema object example/default value is missing. [UntitledAPI:177:11] (#/components/schemas/JsonValue/anyOf/0)
+│
+│  Schema object example/default value is missing. [UntitledAPI:180:11] (#/components/schemas/JsonValue/anyOf/1)
+│
+│  Schema object example/default value is missing. [UntitledAPI:183:11] (#/components/schemas/JsonValue/anyOf/2)
+│
+│  Schema object example/default value is missing. [UntitledAPI:186:11] (#/components/schemas/JsonValue/anyOf/3)
+│
+│  Schema object example/default value is missing. [UntitledAPI:189:11] (#/components/schemas/JsonValue/anyOf/4)
+│
+│  Schema object example/default value is missing. [UntitledAPI:192:11] (#/components/schemas/JsonValue/anyOf/5)
+│
+│  Schema object example/default value is missing. [UntitledAPI:198:18] (#/components/schemas/Message)
+│
+│  Schema object example/default value is missing. [UntitledAPI:202:22] (#/components/schemas/Message/properties/content)
+│
+│  Schema object example/default value is missing. [UntitledAPI:207:19] (#/components/schemas/Message/properties/role)
+│
+│  Schema object example/default value is missing. [UntitledAPI:233:22] (#/components/schemas/MessageResponse/properties/message)
+│
+│  Schema object example/default value is missing. [UntitledAPI:238:31] (#/components/schemas/MessageResponse/properties/protocol_version)
+│
+│  Schema object example/default value is missing. [UntitledAPI:242:25] (#/components/schemas/MessageResponse/properties/request_id)
+│
+│  Schema object example/default value is missing. [UntitledAPI:248:25] (#/components/schemas/MessageResponse/properties/session_id)
+│
+│  Schema object example/default value is missing. [UntitledAPI:254:19] (#/components/schemas/MessageResponse/properties/type)
+│
+│  Schema object example/default value is missing. [UntitledAPI:268:19] (#/components/schemas/ToolCall)
+│
+│  Schema object example/default value is missing. [UntitledAPI:272:24] (#/components/schemas/ToolCall/properties/arguments)
+│
+│  Schema object example/default value is missing. [UntitledAPI:278:29] (#/components/schemas/ToolCall/properties/correlation_id)
+│
+│  Schema object example/default value is missing. [UntitledAPI:284:19] (#/components/schemas/ToolCall/properties/name)
+│
+│  Schema object example/default value is missing. [UntitledAPI:315:31] (#/components/schemas/ToolCallResponse/properties/protocol_version)
+│
+│  Schema object example/default value is missing. [UntitledAPI:319:25] (#/components/schemas/ToolCallResponse/properties/request_id)
+│
+│  Schema object example/default value is missing. [UntitledAPI:325:25] (#/components/schemas/ToolCallResponse/properties/session_id)
+│
+│  Schema object example/default value is missing. [UntitledAPI:334:19] (#/components/schemas/ToolCallResponse/properties/type)
+│
+│  Schema object example/default value is missing. [UntitledAPI:348:25] (#/components/schemas/ToolDefinition)
+│
+│  Schema object example/default value is missing. [UntitledAPI:352:26] (#/components/schemas/ToolDefinition/properties/description)
+│
+│  Schema object example/default value is missing. [UntitledAPI:357:27] (#/components/schemas/ToolDefinition/properties/input_schema)
+│
+│  Schema object example/default value is missing. [UntitledAPI:363:19] (#/components/schemas/ToolDefinition/properties/name)
+│
+│  Schema object example/default value is missing. [UntitledAPI:377:21] (#/components/schemas/ToolResult)
+│
+│  Schema object example/default value is missing. [UntitledAPI:381:29] (#/components/schemas/ToolResult/properties/correlation_id)
+│
+│  Schema object example/default value is missing. [UntitledAPI:387:19] (#/components/schemas/ToolResult/properties/name)
+│
+│  Schema object example/default value is missing. [UntitledAPI:393:21] (#/components/schemas/ToolResult/properties/result)
+│
+│  Schema object example/default value is missing. [UntitledAPI:399:21] (#/components/schemas/ToolResult/properties/status)
+│
+│  Schema object example/default value is missing. [UntitledAPI:415:26] (#/components/schemas/ValidationError)
+│
+│  Schema object example/default value is missing. [UntitledAPI:418:18] (#/components/schemas/ValidationError/properties/loc)
+│
+│  Schema object example/default value is missing. [UntitledAPI:419:22] (#/components/schemas/ValidationError/properties/loc/items)
+│
+│  Schema object example/default value is missing. [UntitledAPI:421:17] (#/components/schemas/ValidationError/properties/loc/items/anyOf/0)
+│
+│  Schema object example/default value is missing. [UntitledAPI:424:17] (#/components/schemas/ValidationError/properties/loc/items/anyOf/1)
+│
+│  Schema object example/default value is missing. [UntitledAPI:431:18] (#/components/schemas/ValidationError/properties/msg)
+│
+│  Schema object example/default value is missing. [UntitledAPI:434:19] (#/components/schemas/ValidationError/properties/type)
+│
+│  Schema object example/default value is missing. [UntitledAPI:551:31] (#/paths/~1agent/post/responses/401/content/application~1json/schema/properties/detail)
+│
+│  Media type object example is missing. [UntitledAPI:566:35] (#/paths/~1agent/post/responses/422/content/application~1json)
+│
+└  Succeeded
+

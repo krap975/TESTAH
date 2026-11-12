@@ -1,0 +1,5 @@
+window.addEventListener('DOMContentLoaded', function(event) {
+    window.APIMaticDevPortal.show(
+{"container":"apimatic-widget","portalStyle":"default","apiKey":"xxx","baseUrl":"./","enableExport":false,"enableAnalytics":true,"enableConsoleCalls":true,"useProxyForConsoleCalls":false,"languageSettings":{"http_curl_v1":{"sdkDownloadLink":"","disableSdkDownload":false}},"initialPlatform":"http_curl_v1","maskSensitiveValues":true,"useLegacyApiPlayground":false,"codegenApiRoutes":{"docsgen":"/static/docs/testah-candidate-agent-protocol-{template}.json","codegen":"/static/sdks/testah-candidate-agent-protocol-{template}.zip","transform":"/static/exports/testah-candidate-agent-protocol-{format}.{ext}"},"renameHttpToRest":false,"sideMenuTitleBehavior":"default","enableFeedbackWidget":true,"enableHttpVerbsForAllLangs":false,"focusAuthSectionOnUnauthorizedError":true,"aiAssistMenu":{"enable":true,"tools":{"chatgpt":true,"claude":true,"perplexity":true,"grok":true,"googleAiStudio":true},"showCopyPage":true,"showViewAsMarkdown":true}}
+    );
+});
